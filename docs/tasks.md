@@ -7,27 +7,27 @@ Cursor should follow tasks sequentially. Always refer to `prd.md` before impleme
 
 ## Phase 1 — Foundation
 
-- [ ] Confirm Next.js + Tailwind v4 dev server runs cleanly (`npm run dev`)
-- [ ] Add `OWM_API_KEY` to `.env.local` (OpenWeatherMap free tier key)
-- [ ] Add OpenWeatherMap icon domain to `next.config.ts` image remotePatterns:
+- [x] Confirm Next.js + Tailwind v4 dev server runs cleanly (`npm run dev`)
+- [x] Add `OWM_API_KEY` to `.env.local` (OpenWeatherMap free tier key)
+- [x] Add OpenWeatherMap icon domain to `next.config.ts` image remotePatterns:
   ```ts
   { protocol: 'https', hostname: 'openweathermap.org' }
   ```
-- [ ] Create `/api/weather/route.ts` — accepts `?city=` query param, fetches current weather + 5-day forecast from OWM, returns combined JSON. Keep API key server-side only.
-- [ ] Define TypeScript types in `lib/types/weather.ts`:
+- [x] Create `/api/weather/route.ts` — accepts `?city=` query param, fetches current weather + 5-day forecast from OWM, returns combined JSON. Keep API key server-side only.
+- [x] Define TypeScript types in `lib/types/weather.ts`:
   - `WeatherCurrent` — temp, feels_like, humidity, wind_speed, description, icon, city, country
   - `HourlyItem` — time, temp, icon, description
   - `DailyItem` — date, temp_min, temp_max, icon, description
   - `WeatherData` — `{ current: WeatherCurrent, hourly: HourlyItem[], daily: DailyItem[] }`
-- [ ] Create `lib/weather.ts` — helper functions:
+- [x] Create `lib/weather.ts` — helper functions:
   - `fetchWeather(city: string): Promise<WeatherData>` — calls `/api/weather`
   - `celsiusToFahrenheit(c: number): number`
   - `formatDate(timestamp: number): string`
   - `formatTime(timestamp: number): string`
-- [ ] Define global layout in `app/layout.tsx`:
+- [x] Define global layout in `app/layout.tsx`:
   - Dark mode class strategy: `class="dark"` on `<html>` controlled by client component
   - Import global styles, set font, define metadata (title: "Weather App")
-- [ ] Establish base page structure in `app/page.tsx` — placeholder content only, confirms layout renders
+- [x] Establish base page structure in `app/page.tsx` — placeholder content only, confirms layout renders
 
 ---
 
