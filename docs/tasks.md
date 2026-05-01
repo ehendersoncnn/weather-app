@@ -33,7 +33,7 @@ Cursor should follow tasks sequentially. Always refer to `prd.md` before impleme
 
 ## Phase 2 — Core UI Components
 
-- [ ] `components/WeatherBackground.tsx` (Client Component) — **immersive animated background**
+- [x] `components/WeatherBackground.tsx` (Client Component) — **immersive animated background**
   - Props: `conditionId: number`, `isDay: boolean`, `theme: 'light' | 'dark'`
   - Renders as a `fixed` full-viewport layer behind all UI content (`z-0`)
   - Map OWM condition codes to condition groups (`2xx`=thunderstorm, `3xx`=drizzle, `5xx`=rain, `6xx`=snow, `7xx`=fog, `800`=clear, `80x`=clouds)
@@ -47,33 +47,33 @@ Cursor should follow tasks sequentially. Always refer to `prd.md` before impleme
   - Respect `prefers-reduced-motion`: skip all particle and movement animations, render static gradient only
   - Particle caps: Rain ≤ 150 drops, Snow ≤ 80 flakes
   - See `prd.md` → Animated Background Spec for full condition → color palette mapping
-- [ ] `components/SearchBar.tsx` (Client Component)
+- [x] `components/SearchBar.tsx` (Client Component)
   - Controlled input, submit on Enter or button click
   - Props: `onSearch: (city: string) => void`, `isLoading: boolean`
   - Shows subtle loading state while fetching
-- [ ] `components/CurrentWeather.tsx` (Server-safe, pure display)
+- [x] `components/CurrentWeather.tsx` (Server-safe, pure display)
   - Props: `data: WeatherCurrent`, `unit: 'C' | 'F'`
   - Hero temperature display, condition icon, feels-like, humidity, wind
   - City + country subtitle
-- [ ] `components/HourlyForecast.tsx`
+- [x] `components/HourlyForecast.tsx`
   - Horizontal scrollable strip, 8 slots (every 3 hours over 24 hrs)
   - Each slot: time, icon, temp
   - Props: `items: HourlyItem[]`, `unit: 'C' | 'F'`
-- [ ] `components/DailyForecast.tsx`
+- [x] `components/DailyForecast.tsx`
   - 7-row list or card grid
   - Each row: day name, icon, description, high/low temps
   - Props: `items: DailyItem[]`, `unit: 'C' | 'F'`
-- [ ] `components/ThemeToggle.tsx` (Client Component)
+- [x] `components/ThemeToggle.tsx` (Client Component)
   - Toggles `dark` class on `<html>`
   - Reads system preference on mount via `prefers-color-scheme`
   - Persists preference to `localStorage`
-- [ ] `components/UnitToggle.tsx` (Client Component)
+- [x] `components/UnitToggle.tsx` (Client Component)
   - Simple °F / °C switch
   - Lifted state — lives in page-level context or prop-drilled from `app/page.tsx`
-- [ ] `components/WeatherSkeleton.tsx`
+- [x] `components/WeatherSkeleton.tsx`
   - Skeleton placeholder matching the layout of current + hourly + daily sections
   - Shown while fetch is in progress
-- [ ] `components/ErrorMessage.tsx`
+- [x] `components/ErrorMessage.tsx`
   - Friendly error display for city-not-found and API failure states
   - Props: `message: string`
 

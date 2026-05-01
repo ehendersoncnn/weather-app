@@ -1,4 +1,6 @@
 export interface WeatherCurrent {
+  /** Unix seconds — OWM observation time. */
+  dt: number;
   temp: number;
   feels_like: number;
   humidity: number;

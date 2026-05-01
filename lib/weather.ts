@@ -54,3 +54,12 @@ export function formatTime(timestamp: number): string {
     minute: "2-digit",
   }).format(new Date(timestamp * 1000));
 }
+
+/** Uses OWM `sys.sunrise` / `sys.sunset` unix seconds (UTC-aligned with their API). */
+export function isDaytime(
+  nowSeconds: number,
+  sunriseSeconds: number,
+  sunsetSeconds: number,
+): boolean {
+  return nowSeconds >= sunriseSeconds && nowSeconds < sunsetSeconds;
+}

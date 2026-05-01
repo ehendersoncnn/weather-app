@@ -24,3 +24,90 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+/* Smooth sky gradient cross-fades for WeatherBackground */
+@property --weather-sky-top {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #90a4ae;
+}
+
+@property --weather-sky-bot {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #cfd8dc;
+}
+
+.weather-sky-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--weather-sky-top),
+    var(--weather-sky-bot)
+  );
+  transition:
+    --weather-sky-top 800ms ease,
+    --weather-sky-bot 800ms ease;
+}
+
+@keyframes weather-cloud-drift {
+  0%,
+  100% {
+    transform: translateX(-8%);
+  }
+  50% {
+    transform: translateX(8%);
+  }
+}
+
+@keyframes weather-fog-drift {
+  0% {
+    transform: translateX(-12%);
+  }
+  100% {
+    transform: translateX(12%);
+  }
+}
+
+@keyframes weather-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes weather-sun-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes weather-lightning-flash {
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+  }
+  92%,
+  94% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes weather-ripple {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}

@@ -9,6 +9,7 @@ import type {
 const OWM_BASE = "https://api.openweathermap.org/data/2.5";
 
 type OwmCurrentResponse = {
+  dt?: number;
   weather?: Array<{ id: number; description: string; icon: string }>;
   main?: {
     temp: number;
@@ -38,8 +39,10 @@ function mapCurrent(json: OwmCurrentResponse): WeatherCurrent | null {
   const w = json.weather?.[0];
   const main = json.main;
   const sys = json.sys;
-  if (!w || !main || !sys || !json.name) return null;
+  if (!w || !main || !sys || !json.name || typeof json.dt !== "number")
+    return null;
   return {
+    dt: json.dt,
     temp: main.temp,
     feels_like: main.feels_like,
     humidity: main.humidity,
