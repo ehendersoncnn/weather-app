@@ -81,21 +81,21 @@ Cursor should follow tasks sequentially. Always refer to `prd.md` before impleme
 
 ## Phase 3 — Feature Assembly & Data Wiring
 
-- [ ] Wire `app/page.tsx` as a Client Component:
+- [x] Wire `app/page.tsx` as a Client Component:
   - State: `city`, `weatherData`, `isLoading`, `error`, `unit`
   - On search: call `fetchWeather(city)`, update state
   - Pass `conditionId`, `isDay`, and `theme` to `WeatherBackground` — update on every new weather fetch
   - Render: `WeatherBackground` (fixed, z-0) → content layer (relative, z-10) → `SearchBar` → conditional `WeatherSkeleton` / `ErrorMessage` / weather components
-- [ ] Derive `isDay` from OWM `sys.sunrise` and `sys.sunset` timestamps in API response — pass to background
-- [ ] Implement background transition on new city search: cross-fade between old and new condition state (CSS opacity transition on background layer)
-- [ ] Background default/loading state: slow neutral gradient drift (muted blue-grey) while data is fetching
-- [ ] Implement unit conversion: all temps rendered through a `formatTemp(value, unit)` util — no raw numbers in JSX
-- [ ] Handle edge cases:
+- [x] Derive `isDay` from OWM `sys.sunrise` and `sys.sunset` timestamps in API response — pass to background
+- [x] Implement background transition on new city search: cross-fade between old and new condition state (CSS opacity transition on background layer)
+- [x] Background default/loading state: slow neutral gradient drift (muted blue-grey) while data is fetching
+- [x] Implement unit conversion: all temps rendered through a `formatTemp(value, unit)` util — no raw numbers in JSX
+- [x] Handle edge cases:
   - Empty search (no API call, optional inline hint)
   - API rate limit / network error (show `ErrorMessage` with retry prompt)
   - City not found (OWM returns 404 — map to friendly message)
-- [ ] Add default city on first load (e.g., "Atlanta") so the app never opens blank
-- [ ] Optional: persist last searched city to `localStorage` and restore on mount
+- [x] Add default city on first load (e.g., "Atlanta") so the app never opens blank
+- [x] Optional: persist last searched city to `localStorage` and restore on mount
 
 ---
 

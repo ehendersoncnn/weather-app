@@ -49,6 +49,23 @@ body {
     --weather-sky-bot 800ms ease;
 }
 
+@keyframes weather-loading-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.93;
+  }
+}
+
+.weather-sky-loading {
+  animation: weather-loading-breathe 14s ease-in-out infinite;
+  transform-origin: 50% 30%;
+}
+
 @keyframes weather-cloud-drift {
   0%,
   100% {

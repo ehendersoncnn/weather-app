@@ -25,6 +25,34 @@ export function resolveWeatherScene(
   return "default";
 }
 
+/** Bright sky scenes in app "light" mode — use dark text on a light frosted scrim. */
+const LIGHT_APP_BRIGHT_SCENES = new Set<WeatherScene>([
+  "clearDay",
+  "cloudsFew",
+  "snow",
+]);
+
+/**
+ * Whether chrome floating over the animated sky should use light foreground colors
+ * (and a darker scrim). Dark app theme is always treated as needing light text.
+ */
+export function atmospherePrefersLightText(
+  appTheme: "light" | "dark",
+  scene: WeatherScene,
+): boolean {
+  if (appTheme === "dark") return true;
+  return !LIGHT_APP_BRIGHT_SCENES.has(scene);
+}
+
+/** Muted blue-grey drift while data is fetching (Phase 3). */
+export const LOADING_SKY_PALETTE: Record<
+  "light" | "dark",
+  [string, string]
+> = {
+  light: ["#94a3b8", "#cbd5e1"],
+  dark: ["#1e293b", "#475569"],
+};
+
 /** PRD Animated Background Spec — light / dark gradient stops per scene. */
 export const SCENE_PALETTES: Record<
   WeatherScene,

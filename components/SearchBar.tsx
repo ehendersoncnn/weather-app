@@ -1,20 +1,20 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 
 export interface SearchBarProps {
+  value: string;
+  onChange: (value: string) => void;
   onSearch: (city: string) => void;
   isLoading: boolean;
-  initialValue?: string;
 }
 
 export function SearchBar({
+  value,
+  onChange,
   onSearch,
   isLoading,
-  initialValue = "",
 }: SearchBarProps) {
-  const [value, setValue] = useState(initialValue);
-
   const submit = useCallback(() => {
     const q = value.trim();
     if (!q || isLoading) return;
@@ -39,7 +39,7 @@ export function SearchBar({
         autoComplete="off"
         placeholder="Search city…"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         disabled={isLoading}
         className="min-h-11 flex-1 rounded-xl border border-zinc-300/90 bg-white/90 px-4 py-2.5 text-zinc-900 shadow-sm backdrop-blur-sm placeholder:text-zinc-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 disabled:opacity-60 dark:border-zinc-600 dark:bg-zinc-900/85 dark:text-zinc-50 dark:placeholder:text-zinc-500"
       />

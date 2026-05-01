@@ -11,7 +11,16 @@ export async function fetchWeather(city: string): Promise<WeatherData> {
   const params = new URLSearchParams({ city: city.trim() });
   const path = `/api/weather?${params}`;
   const url = typeof window === "undefined" ? `${getBaseUrl()}${path}` : path;
-  const res = await fetch(url);
+
+  let res: Response;
+  try {
+    res = await fetch(url);
+  } catch {
+    throw new Error(
+      "Network error — check your connection and try again.",
+    );
+  }
+
   const body = (await res.json()) as WeatherData & { error?: string };
   if (!res.ok) {
     throw new Error(

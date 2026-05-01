@@ -14,6 +14,10 @@ import {
   subscribeDocumentDarkClass,
 } from "@/lib/html-theme";
 import { DEFAULT_TEMP_UNIT } from "@/lib/weather";
+import {
+  atmospherePrefersLightText,
+  resolveWeatherScene,
+} from "@/lib/weather-scenes";
 
 export function AtlantaClientView({
   data,
@@ -29,6 +33,25 @@ export function AtlantaClientView({
   );
   const theme = dark ? "dark" : "light";
 
+  const scene = resolveWeatherScene(data.current.conditionId, isDay);
+  const lightOnTop = atmospherePrefersLightText(theme, scene);
+
+  const homeLinkClass = lightOnTop
+    ? "text-sm font-medium text-white underline decoration-white/80 underline-offset-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.9)] hover:text-zinc-100 focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    : "text-sm font-medium text-zinc-950 underline decoration-zinc-950/45 underline-offset-4 [text-shadow:0_1px_3px_rgba(255,255,255,0.95)] hover:text-zinc-800 focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950";
+
+  const footText = lightOnTop
+    ? "text-zinc-100 [text-shadow:0_1px_3px_rgba(0,0,0,0.88)]"
+    : "text-zinc-900 [text-shadow:0_1px_3px_rgba(255,255,255,0.95),0_0_1px_rgba(255,255,255,0.85)]";
+
+  const footLinkClass = lightOnTop
+    ? "font-medium text-white underline decoration-white/80 underline-offset-2 [text-shadow:0_1px_3px_rgba(0,0,0,0.92)] hover:text-zinc-100 focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    : "font-medium text-zinc-950 underline decoration-zinc-950/50 underline-offset-2 [text-shadow:0_1px_3px_rgba(255,255,255,0.95)] hover:text-zinc-800 focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950";
+
+  const codeClass = lightOnTop
+    ? "rounded bg-white/25 px-1 text-zinc-50 [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]"
+    : "rounded bg-zinc-950/10 px-1 text-zinc-950 [text-shadow:0_1px_2px_rgba(255,255,255,0.8)]";
+
   return (
     <>
       <WeatherBackground
@@ -38,10 +61,7 @@ export function AtlantaClientView({
       />
       <div className="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-10 pb-16">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            href="/"
-            className="text-sm text-zinc-700 underline-offset-4 hover:underline dark:text-zinc-200"
-          >
+          <Link href="/" className={homeLinkClass}>
             ← Home
           </Link>
           <ThemeToggle />
@@ -53,15 +73,12 @@ export function AtlantaClientView({
           <DailyForecast items={data.daily} unit={DEFAULT_TEMP_UNIT} />
         </div>
 
-        <p className="mt-10 text-xs text-zinc-600 dark:text-zinc-400">
+        <p className={`mt-10 text-xs leading-relaxed ${footText}`}>
           API returns °C; display uses{" "}
-          <code className="rounded bg-black/10 px-1 dark:bg-white/10">
-            formatTemp
-          </code>
-          .{" "}
+          <code className={codeClass}>formatTemp</code>.{" "}
           <Link
             href="/api/weather?city=Atlanta"
-            className="underline hover:text-zinc-900 dark:hover:text-zinc-100"
+            className={footLinkClass}
           >
             Raw JSON
           </Link>

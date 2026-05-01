@@ -9,6 +9,7 @@ import {
   type CSSProperties,
 } from "react";
 import {
+  LOADING_SKY_PALETTE,
   resolveWeatherScene,
   SCENE_PALETTES,
   sceneShowsLightning,
@@ -23,6 +24,8 @@ export interface WeatherBackgroundProps {
   conditionId: number;
   isDay: boolean;
   theme: WeatherBackgroundTheme;
+  /** Neutral loading sky + soft motion while fetching. */
+  loading?: boolean;
 }
 
 function subscribePrefersReducedMotion(onChange: () => void) {
@@ -401,13 +404,18 @@ export function WeatherBackground({
   conditionId,
   isDay,
   theme,
+  loading = false,
 }: WeatherBackgroundProps) {
   const reduced = usePrefersReducedMotion();
-  const scene = useMemo(
-    () => resolveWeatherScene(conditionId, isDay),
-    [conditionId, isDay],
-  );
-  const [top, bottom] = SCENE_PALETTES[scene][theme];
+  const scene = useMemo((): WeatherScene => {
+    if (loading) return "default";
+    return resolveWeatherScene(conditionId, isDay);
+  }, [loading, conditionId, isDay]);
+
+  const [top, bottom] = useMemo(() => {
+    if (loading) return LOADING_SKY_PALETTE[theme];
+    return SCENE_PALETTES[scene][theme];
+  }, [loading, scene, theme]);
   const [lightningFlash, setLightningFlash] = useState(false);
 
   const skyStyle = {
@@ -464,7 +472,7 @@ export function WeatherBackground({
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
       <div
-        className="weather-sky-gradient absolute inset-0"
+        className={`weather-sky-gradient absolute inset-0 ${loading && !reduced ? "weather-sky-loading" : ""}`}
         style={skyStyle}
       />
 
