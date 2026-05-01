@@ -58,16 +58,16 @@ export const SCENE_PALETTES: Record<
   WeatherScene,
   { light: [string, string]; dark: [string, string] }
 > = {
-  clearDay: { light: ["#FDB813", "#87CEEB"], dark: ["#1a1a2e", "#16213e"] },
-  clearNight: { light: ["#0f3460", "#533483"], dark: ["#0a0a1a", "#0f3460"] },
-  cloudsFew: { light: ["#B0C4DE", "#E8EAF6"], dark: ["#2d2d44", "#1a1a2e"] },
-  cloudsHeavy: { light: ["#8C9BA8", "#CFD8DC"], dark: ["#1c1c1c", "#2d2d44"] },
-  rain: { light: ["#455A64", "#607D8B"], dark: ["#1a1a2e", "#0d0d1a"] },
-  drizzle: { light: ["#455A64", "#607D8B"], dark: ["#1a1a2e", "#0d0d1a"] },
-  thunder: { light: ["#263238", "#37474F"], dark: ["#0a0a0a", "#1a1a2e"] },
-  snow: { light: ["#E3F2FD", "#BBDEFB"], dark: ["#1a2744", "#0d1b2e"] },
-  fog: { light: ["#B0BEC5", "#ECEFF1"], dark: ["#1c1c1c", "#2d2d2d"] },
-  default: { light: ["#90A4AE", "#CFD8DC"], dark: ["#1a1a2e", "#2d2d44"] },
+  clearDay: { light: ["#FDB813", "#87CEEB"], dark: ["#0c1222", "#1e3a5f"] },
+  clearNight: { light: ["#0f3460", "#533483"], dark: ["#06060f", "#0f2744"] },
+  cloudsFew: { light: ["#B0C4DE", "#E8EAF6"], dark: ["#252538", "#141420"] },
+  cloudsHeavy: { light: ["#8C9BA8", "#CFD8DC"], dark: ["#121216", "#252830"] },
+  rain: { light: ["#455A64", "#78909C"], dark: ["#0d1118", "#1a2332"] },
+  drizzle: { light: ["#455A64", "#78909C"], dark: ["#0d1118", "#1a2332"] },
+  thunder: { light: ["#263238", "#455A64"], dark: ["#050508", "#151d28"] },
+  snow: { light: ["#E3F2FD", "#BBDEFB"], dark: ["#0f1728", "#1a2d44"] },
+  fog: { light: ["#B0BEC5", "#ECEFF1"], dark: ["#18181c", "#2a2a2e"] },
+  default: { light: ["#90A4AE", "#CFD8DC"], dark: ["#12141c", "#242836"] },
 };
 
 export function sceneUsesRainCanvas(scene: WeatherScene): boolean {

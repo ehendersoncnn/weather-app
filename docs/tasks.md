@@ -101,21 +101,21 @@ Cursor should follow tasks sequentially. Always refer to `prd.md` before impleme
 
 ## Phase 4 — Light / Dark Mode & Visual Polish
 
-- [ ] Fully design **dark mode** — background, card surfaces, text, icon tints, borders; verify dark-mode background palettes per condition (see prd.md spec)
-- [ ] Fully design **light mode** — equally considered background palettes per condition
-- [ ] Verify theme toggle transitions smoothly — background cross-fades, no hard cuts
-- [ ] Test all 8 condition states visually in both themes: Clear Day, Clear Night, Few Clouds, Overcast, Rain, Thunderstorm, Snow, Fog
-- [ ] Verify text and UI cards maintain WCAG AA contrast (≥ 4.5:1) over every background condition — add semi-transparent overlay behind text if needed (`bg-black/20` or `bg-white/10`)
-- [ ] Refine typography scale:
+- [x] Fully design **dark mode** — background, card surfaces, text, icon tints, borders; verify dark-mode background palettes per condition (see prd.md spec)
+- [x] Fully design **light mode** — equally considered background palettes per condition
+- [x] Verify theme toggle transitions smoothly — background cross-fades, no hard cuts
+- [x] Test all 8 condition states visually in both themes: Clear Day, Clear Night, Few Clouds, Overcast, Rain, Thunderstorm, Snow, Fog
+- [x] Verify text and UI cards maintain WCAG AA contrast (≥ 4.5:1) over every background condition — add semi-transparent overlay behind text if needed (`bg-black/20` or `bg-white/10`)
+- [x] Refine typography scale:
   - Hero temp: large, bold, prominent
   - Condition description: secondary, subdued
   - Labels (humidity, wind, etc.): small caps or muted weight
-- [ ] Ensure `HourlyForecast` scroll strip looks intentional (hide scrollbar on desktop, subtle fade edges)
-- [ ] Responsive audit:
+- [x] Ensure `HourlyForecast` scroll strip looks intentional (hide scrollbar on desktop, subtle fade edges)
+- [x] Responsive audit:
   - Mobile (375px): single column, full-width cards
   - Tablet (768px): comfortable padding, readable hierarchy
   - Desktop (1280px): centered container, max-width constrained
-- [ ] Verify weather icons render correctly in both themes (tint or swap if needed)
+- [x] Verify weather icons render correctly in both themes (tint or swap if needed)
 
 ---
 

@@ -14,7 +14,7 @@ export function CurrentWeather({ data, unit }: CurrentWeatherProps) {
   return (
     <section
       aria-labelledby="current-weather-heading"
-      className="rounded-2xl border border-zinc-200/80 bg-white/85 p-6 shadow-lg backdrop-blur-md dark:border-zinc-700/80 dark:bg-zinc-900/80"
+      className="theme-surface-transition rounded-2xl border border-zinc-200/90 bg-white/92 p-5 shadow-lg shadow-zinc-900/5 backdrop-blur-md dark:border-zinc-600/55 dark:bg-zinc-950/90 dark:shadow-black/30 sm:p-6"
     >
       <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <Image
@@ -22,25 +22,25 @@ export function CurrentWeather({ data, unit }: CurrentWeatherProps) {
           alt=""
           width={96}
           height={96}
-          className="h-24 w-24 shrink-0"
+          className="weather-owm-icon h-24 w-24 shrink-0"
           priority
         />
         <div className="min-w-0 flex-1">
           <h2 id="current-weather-heading" className="sr-only">
             Current conditions
           </h2>
-          <p className="text-sm font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500 dark:text-zinc-400">
             {data.city}, {data.country}
           </p>
-          <p className="mt-1 text-5xl font-bold tracking-tight text-zinc-900 tabular-nums dark:text-zinc-50 sm:text-6xl">
+          <p className="mt-2 text-5xl font-extrabold tracking-tight text-zinc-950 tabular-nums dark:text-zinc-50 sm:text-6xl md:text-7xl">
             {formatTemp(data.temp, unit)}
           </p>
-          <p className="mt-1 capitalize text-zinc-600 dark:text-zinc-300">
+          <p className="mt-2 text-base font-normal capitalize leading-snug text-zinc-600 dark:text-zinc-400">
             {data.description}
           </p>
-          <dl className="mt-4 grid grid-cols-1 gap-2 text-sm text-zinc-600 sm:grid-cols-3 dark:text-zinc-400">
+          <dl className="mt-5 grid grid-cols-1 gap-3 text-sm text-zinc-700 sm:grid-cols-3 dark:text-zinc-300">
             <div>
-              <dt className="font-medium text-zinc-500 dark:text-zinc-500">
+              <dt className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
                 Feels like
               </dt>
               <dd className="tabular-nums">
@@ -48,13 +48,13 @@ export function CurrentWeather({ data, unit }: CurrentWeatherProps) {
               </dd>
             </div>
             <div>
-              <dt className="font-medium text-zinc-500 dark:text-zinc-500">
+              <dt className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
                 Humidity
               </dt>
               <dd className="tabular-nums">{data.humidity}%</dd>
             </div>
             <div>
-              <dt className="font-medium text-zinc-500 dark:text-zinc-500">
+              <dt className="text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
                 Wind
               </dt>
               <dd className="tabular-nums">{data.wind_speed} m/s</dd>

@@ -59,7 +59,7 @@ export function AtlantaClientView({
         isDay={isDay}
         theme={theme}
       />
-      <div className="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-10 pb-16">
+      <div className="relative z-10 mx-auto min-h-screen w-full max-w-3xl px-4 py-8 pb-16 sm:px-6 sm:py-10 lg:max-w-4xl lg:px-8 xl:max-w-[52rem]">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link href="/" className={homeLinkClass}>
             ← Home
@@ -67,11 +67,11 @@ export function AtlantaClientView({
           <ThemeToggle />
         </div>
 
-        <div className="mt-8 space-y-6">
+        <main className="theme-surface-transition mt-8 space-y-6 overflow-hidden rounded-2xl border border-white/30 bg-white/32 p-4 shadow-2xl shadow-black/10 ring-1 ring-white/20 backdrop-blur-xl dark:border-zinc-600/35 dark:bg-zinc-950/48 dark:shadow-black/40 dark:ring-zinc-500/15 sm:p-6 md:p-8">
           <CurrentWeather data={data.current} unit={DEFAULT_TEMP_UNIT} />
           <HourlyForecast items={data.hourly} unit={DEFAULT_TEMP_UNIT} />
           <DailyForecast items={data.daily} unit={DEFAULT_TEMP_UNIT} />
-        </div>
+        </main>
 
         <p className={`mt-10 text-xs leading-relaxed ${footText}`}>
           API returns °C; display uses{" "}

@@ -168,7 +168,7 @@ export default function HomePage() {
       />
 
       <div className="relative z-10 min-h-screen">
-        <div className="mx-auto max-w-3xl px-4 pb-16 pt-6 sm:px-6 sm:pt-10">
+        <div className="mx-auto w-full max-w-3xl px-4 pb-16 pt-6 sm:px-6 sm:pt-10 lg:max-w-4xl lg:px-8 xl:max-w-[52rem]">
           <header className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p
@@ -200,7 +200,7 @@ export default function HomePage() {
             />
           </div>
 
-          <main className="mt-8 space-y-6 rounded-2xl border border-white/20 bg-white/20 p-4 shadow-xl backdrop-blur-md dark:border-zinc-700/40 dark:bg-zinc-950/35 sm:p-6">
+          <main className="theme-surface-transition relative mt-8 space-y-6 overflow-hidden rounded-2xl border border-white/30 bg-white/32 p-4 shadow-2xl shadow-black/10 ring-1 ring-white/20 backdrop-blur-xl dark:border-zinc-600/35 dark:bg-zinc-950/48 dark:shadow-black/40 dark:ring-zinc-500/15 sm:p-6 md:p-8">
             {isLoading && <WeatherSkeleton />}
             {!isLoading && error && (
               <ErrorMessage

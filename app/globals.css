@@ -25,6 +25,14 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition:
+      background-color 700ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
 /* Smooth sky gradient cross-fades for WeatherBackground */
 @property --weather-sky-top {
   syntax: "<color>";
@@ -45,8 +53,36 @@ body {
     var(--weather-sky-bot)
   );
   transition:
-    --weather-sky-top 800ms ease,
-    --weather-sky-bot 800ms ease;
+    --weather-sky-top 800ms cubic-bezier(0.4, 0, 0.2, 1),
+    --weather-sky-bot 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-sky-gradient {
+    transition: none;
+  }
+}
+
+.weather-owm-icon {
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.14));
+}
+
+.dark .weather-owm-icon {
+  filter: drop-shadow(0 1px 4px rgb(0 0 0 / 0.55)) brightness(1.12) saturate(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-surface-transition {
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .theme-surface-transition {
+    transition-property: background-color, border-color, box-shadow, color;
+    transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 @keyframes weather-loading-breathe {

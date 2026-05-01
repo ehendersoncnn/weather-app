@@ -241,7 +241,7 @@ function CloudLayers({
       {clouds.map((c) => (
         <div
           key={c.key}
-          className="absolute rounded-full bg-white/90 blur-2xl will-change-transform dark:bg-zinc-400/30"
+          className="absolute rounded-full bg-white/90 blur-2xl will-change-transform transition-colors duration-700 ease-out motion-reduce:transition-none dark:bg-zinc-400/30"
           style={{
             top: c.top,
             left: c.left,
@@ -267,7 +267,7 @@ function FogLayers({ scene, reduced }: { scene: WeatherScene; reduced: boolean }
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className="absolute -left-1/4 h-[28%] w-[140%] rounded-[999px] bg-white/25 blur-3xl dark:bg-zinc-500/20"
+          className="absolute -left-1/4 h-[28%] w-[140%] rounded-[999px] bg-white/25 blur-3xl transition-colors duration-700 ease-out motion-reduce:transition-none dark:bg-zinc-500/20"
           style={{
             top: `${20 + i * 22}%`,
             opacity: 0.35 + i * 0.1,
@@ -370,7 +370,7 @@ function RainRipple({
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[15%] bg-gradient-to-t from-white/20 to-transparent dark:from-zinc-900/40"
+      className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[15%] bg-gradient-to-t from-white/20 to-transparent transition-[opacity] duration-700 motion-reduce:transition-none dark:from-zinc-900/40"
       style={{
         animation: "weather-ripple 4s ease-in-out infinite",
       }}
