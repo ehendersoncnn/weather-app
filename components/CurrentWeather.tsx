@@ -19,9 +19,10 @@ export function CurrentWeather({ data, unit }: CurrentWeatherProps) {
       <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <Image
           src={src}
-          alt=""
+          alt={`${data.description} (forecast icon)`}
           width={96}
           height={96}
+          sizes="96px"
           className="weather-owm-icon h-24 w-24 shrink-0"
           priority
         />

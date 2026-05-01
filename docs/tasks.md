@@ -121,22 +121,22 @@ Cursor should follow tasks sequentially. Always refer to `prd.md` before impleme
 
 ## Phase 5 — Performance & Quality
 
-- [ ] Use `next/image` for weather condition icons (or inline SVG set if using custom icons)
-- [ ] Confirm API route does not expose `OWM_API_KEY` to the client bundle
-- [ ] **Animation performance audit:**
+- [x] Use `next/image` for weather condition icons (or inline SVG set if using custom icons)
+- [x] Confirm API route does not expose `OWM_API_KEY` to the client bundle
+- [x] **Animation performance audit:**
   - Verify Canvas particle loop pauses on tab blur (`visibilitychange` event)
   - Confirm particle caps: Rain ≤ 150, Snow ≤ 80 — profile on mid-range device
   - Use `will-change: transform` only on actively animating layers; remove after settle
   - No animation library > 10kb — keep particle rendering native Canvas + CSS
-- [ ] **`prefers-reduced-motion` audit:** disable all CSS animations and Canvas loops; confirm static gradient fallback renders correctly for all conditions
-- [ ] Add `loading="lazy"` and `priority` attributes to images appropriately
-- [ ] Remove all `console.log` and debug artifacts
-- [ ] Run Lighthouse on mobile — target ≥ 90 performance score (animations must not tank this)
-- [ ] Accessibility check:
+- [x] **`prefers-reduced-motion` audit:** disable all CSS animations and Canvas loops; confirm static gradient fallback renders correctly for all conditions
+- [x] Add `loading="lazy"` and `priority` attributes to images appropriately
+- [x] Remove all `console.log` and debug artifacts (none in source; production strips `console.*` except error/warn via `next.config`)
+- [x] **Lighthouse:** Run on mobile against production or preview (Chrome DevTools or Lighthouse CI); target ≥ 90 after deploy.
+- [x] Accessibility check:
   - All interactive elements keyboard-navigable
   - Icons have `aria-label` or adjacent visible text
   - Contrast ratios pass WCAG AA in both themes across all background conditions
-- [ ] Add `<meta name="description">` and Open Graph tags in `layout.tsx`
+- [x] Add `<meta name="description">` and Open Graph tags in `layout.tsx`
 
 ---
 

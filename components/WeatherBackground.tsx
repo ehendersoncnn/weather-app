@@ -28,6 +28,11 @@ export interface WeatherBackgroundProps {
   loading?: boolean;
 }
 
+/** Caps aligned with PRD animation audit (rain ≤ 150, snow ≤ 80). */
+const DRIZZLE_DROP_CAP = 72;
+const RAIN_THUNDER_DROP_CAP = 150;
+const SNOW_FLAKE_CAP = 80;
+
 function subscribePrefersReducedMotion(onChange: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
   mq.addEventListener("change", onChange);
@@ -78,8 +83,12 @@ function WeatherParticles({
     document.addEventListener("visibilitychange", onVis);
 
     const dropCount =
-      scene === "drizzle" ? 72 : scene === "rain" || scene === "thunder" ? 150 : 0;
-    const flakeCount = scene === "snow" ? 80 : 0;
+      scene === "drizzle"
+        ? DRIZZLE_DROP_CAP
+        : scene === "rain" || scene === "thunder"
+          ? RAIN_THUNDER_DROP_CAP
+          : 0;
+    const flakeCount = scene === "snow" ? SNOW_FLAKE_CAP : 0;
 
     type Drop = { x: number; y: number; speed: number; len: number };
     type Flake = { x: number; y: number; r: number; vy: number; vx: number; o: number };
@@ -241,7 +250,7 @@ function CloudLayers({
       {clouds.map((c) => (
         <div
           key={c.key}
-          className="absolute rounded-full bg-white/90 blur-2xl will-change-transform transition-colors duration-700 ease-out motion-reduce:transition-none dark:bg-zinc-400/30"
+          className="absolute rounded-full bg-white/90 blur-2xl transition-colors duration-700 ease-out motion-reduce:transition-none dark:bg-zinc-400/30"
           style={{
             top: c.top,
             left: c.left,

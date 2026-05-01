@@ -20,7 +20,8 @@ export function UnitToggle({ unit, onChange }: UnitToggleProps) {
           type="button"
           onClick={() => onChange(u)}
           aria-pressed={unit === u}
-          className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
+          aria-label={u === "F" ? "Use degrees Fahrenheit" : "Use degrees Celsius"}
+          className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent dark:focus-visible:ring-blue-400/50 ${
             unit === u
               ? "bg-zinc-900 text-white shadow dark:bg-zinc-100 dark:text-zinc-900"
               : "text-zinc-600 hover:bg-white/80 dark:text-zinc-300 dark:hover:bg-zinc-800/80"

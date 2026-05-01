@@ -33,9 +33,11 @@ export function HourlyForecast({ items, unit }: HourlyForecastProps) {
               </span>
               <Image
                 src={`https://openweathermap.org/img/wn/${slot.icon}.png`}
-                alt=""
+                alt={`${slot.description} at ${formatTime(slot.time)}`}
                 width={40}
                 height={40}
+                sizes="40px"
+                loading="lazy"
                 className="weather-owm-icon my-1 h-10 w-10"
               />
               <span className="text-sm font-semibold tabular-nums text-zinc-900 dark:text-zinc-50">

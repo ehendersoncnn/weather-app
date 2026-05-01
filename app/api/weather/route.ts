@@ -6,6 +6,8 @@ import type {
   WeatherData,
 } from "@/lib/types/weather";
 
+/** OpenWeatherMap only — `OWM_API_KEY` is server-side (never `NEXT_PUBLIC_*`). */
+
 const OWM_BASE = "https://api.openweathermap.org/data/2.5";
 
 type OwmCurrentResponse = {

@@ -46,7 +46,7 @@ export function SearchBar({
       <button
         type="submit"
         disabled={isLoading || !value.trim()}
-        className="theme-surface-transition inline-flex min-h-11 items-center justify-center rounded-xl bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow transition-colors hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+        className="theme-surface-transition inline-flex min-h-11 items-center justify-center rounded-xl bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow transition-colors hover:bg-zinc-800 focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-blue-400/50"
       >
         {isLoading ? "Loading…" : "Search"}
       </button>

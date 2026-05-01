@@ -33,6 +33,12 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
 /* Smooth sky gradient cross-fades for WeatherBackground */
 @property --weather-sky-top {
   syntax: "<color>";

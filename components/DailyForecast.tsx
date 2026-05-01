@@ -99,9 +99,11 @@ export function DailyForecast({ items, unit }: DailyForecastProps) {
               </span>
               <Image
                 src={`https://openweathermap.org/img/wn/${day.icon}.png`}
-                alt=""
+                alt={`${day.description} on ${formatDate(day.date)}`}
                 width={36}
                 height={36}
+                sizes="36px"
+                loading="lazy"
                 className="weather-owm-icon h-9 w-9 shrink-0 justify-self-center"
               />
               <span className="min-w-0 flex-1 truncate text-sm capitalize text-zinc-600 dark:text-zinc-400">
